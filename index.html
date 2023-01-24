@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plenty Of People?</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com"     crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Noto+Sans+Thai&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="page-container">
+  <div id="content-wrap">
+    <h1 class="top_font">Populating People</h1>
+    <h2 id="chars_present">Wow, look at how many characters there are!</h2>
+    <h2 id="chars_absent">Feel like creating game characters?<br>Use the button below!</h2>
+
+    <button id="new_form_button">New Person</button>
+    <button type="button" id="clear_all_button">Remove EVERYBODY</button>
+
+    <div class="form-box">
+        <form action="#" method="get" id="test">
+            <div id="first_form_label">
+                <label for="fname">First Name</label><br>
+                <input type="text" id="fname" name="first_name" placeholder="Johnny" required >
+            </div>
+            <div>
+                <label for="lname">Last Name</label><br>
+                <input type="text" id="lname" name="last_name" placeholder="Smith" required >
+            </div>
+            <div id="last_form_label">
+                <label for="job_choice">Job Choice</label>
+                <select id="job_choice" name="job_class_choice" required >
+                    <option value="Warrior">Warrior</option>
+                    <option value="Cleric">Cleric</option>
+                    <option value="Archer">Archer</option>
+                    <option value="Jobless">Jobless</option>
+                </select>
+            </div>
+            
+            <button type="submit" id="submit_button">Add New Person</button>
+            <button type="button" id="cancel_button">Cancel</button>
+        </form>
+    </div>
+    <div id="card_container">
+
+    </div>
+  </div>
+
+    <footer id="footer"><a href="https://www.freepik.com/free-vector/viking-characters-ancient-scandinavian-warriors_29314726.htm#query=archer&position=44&from_view=search&track=sph">Images by upklyak on Freepik</a></footer>
+    
+</div>
+
+<script src="myscript.js"></script>
+</body>
+</html>

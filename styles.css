@@ -1,0 +1,169 @@
+:root {
+    font-family: 'Noto Sans Thai', sans-serif;
+  }
+
+  #page-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  #content-wrap {
+    width: 100%;
+    padding-bottom: 2.5rem;
+  }
+  
+  html,
+  body {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .top_font {
+    font-family: 'Aboreto', cursive;
+    font-size: 3.2rem;
+  }
+  
+  h2 {
+    font-size: 1.2rem;
+  }
+  
+  #test {
+      display: none;
+  }
+  
+  #chars_present {
+      display: none;
+  }
+  
+  #card_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(0, min(100%/3, max(75px, 100%/5))));
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .form-box {
+    display: flex;
+    justify-content: center;
+  }
+  
+  input {
+    padding: 0.5rem;
+    margin: 0.7rem;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+  
+  div #first_form_label {
+    margin-top: 0.7rem;
+  }
+  
+  div #last_form_label {
+    margin-bottom: 0.82rem;
+  }
+  
+  div[class*="Jobless"] {
+    background-image: url('https://github.com/JeffLi117/Populating_People/blob/main/viking_undetermined.png?raw=true');
+  }
+
+  div[class*="Warrior"] {
+    background-image: url('https://github.com/JeffLi117/Populating_People/blob/main/viking_warrior.png?raw=true');
+  }
+
+  div[class*="Archer"] {
+    background-image: url('https://github.com/JeffLi117/Populating_People/blob/main/viking_archer.png?raw=true');
+  }
+
+  div[class*="Cleric"] {
+    background-image: url('https://github.com/JeffLi117/Populating_People/blob/main/viking_cleric.png?raw=true');
+  }
+
+  div[class^="card"] {
+    border: 3px solid black;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 100%;
+    height: auto;
+    font-size: 1.25rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 0.8rem;
+    color: black;
+    background-color: white;
+
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 50%;
+    resize: both;
+    position:relative;
+  }
+
+  div[class^="card"] > p {
+    margin: 0;
+    display: flex;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+
+  div[class^="card"] > p[class^="name_"] {
+    font-weight: bold;
+    text-shadow:2px 2px #ff0000;
+    font-family: 'Aboreto', cursive;
+  }
+
+  div[class^="card"] > button {
+    margin-right: auto;
+    margin-top: 0.7rem;
+    display: flex;
+
+    border-radius: 12px;
+    padding: 0.7rem 0.5rem;
+  }
+  
+  #clear_all_button {
+    display: none;
+  }
+  
+  button[class^="jobstatus"] {
+    border: 2px solid rgb(181, 130, 0);
+    background-color:rgb(255, 233, 69);
+    border-radius: 12px;
+    padding: 0.7rem 0.5rem;
+  }
+
+  button[class^="removeowncard"] {
+    border: 1px solid rgb(95, 47, 0);
+    background-color:rgb(216, 106, 32);
+  }
+  
+  
+  button #new_form_button {
+    border: 1px solid rgb(178, 178, 178);
+    margin: 0.5rem;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+footer a,
+a:visited {
+  text-decoration: none;
+  color: black;
+  font-size: 0.8rem;
+}
