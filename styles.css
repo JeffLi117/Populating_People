@@ -1,8 +1,14 @@
 :root {
     font-family: 'Noto Sans Thai', sans-serif;
+    color:aliceblue;
   }
 
   #page-container {
+    background-image: url('https://github.com/JeffLi117/Populating_People/blob/main/15457.jpg?raw=true');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: black;
     position: relative;
     min-height: 100vh;
     display: flex;
@@ -130,6 +136,8 @@
   
   #clear_all_button {
     display: none;
+    margin: 0.5rem;
+    justify-self: center;
   }
   
   button[class^="jobstatus"] {
@@ -164,6 +172,38 @@
 footer a,
 a:visited {
   text-decoration: none;
-  color: black;
+  color:aliceblue;
   font-size: 0.8rem;
+}
+
+#container-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.8);
+  z-index: 12;
+}
+
+#popup {
+  display: none;
+  padding: 2rem;
+  width: 50%;
+  height: 50%;
+  background: #2f32eb;
+  position: absolute;
+  border-radius: 12px;
+  flex-direction: column;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+  font-size: 1.7rem;
+  align-content: center;
+  justify-content: center;
+  z-index: 15;
 }

@@ -26,6 +26,10 @@ class Person {
       this.setLastName(name[1]);
     }
 
+    set newJob(job) {
+      this.job_choice = job;
+    }
+
     get noClassStatement() {
       const SS = `${this.fullName()}'s special ability is ${this.skill}\nHe/She needs more training!`;
       return SS;
@@ -149,12 +153,42 @@ var cardFuncts = (function() {
     })
   }
 
+  function checkIfArrayEmpty() {
+    let charsPresDisplay = document.getElementById("chars_present")
+    let charsAbsDisplay = document.getElementById("chars_absent")
+    let clearAllBtn = document.getElementById("clear_all_button")
+
+    if (totalPop.length > 0) {
+      charsPresDisplay.style.display = "block";
+      charsAbsDisplay.style.display = "none";
+      clearAllBtn.style.display = "inline-block";
+    } else if (totalPop.length == 0) {
+      charsPresDisplay.style.display = "none";
+      charsAbsDisplay.style.display = "block";
+      clearAllBtn.style.display = "none";
+    }
+  }
+
   return {
     newCharCard: newCharCard,
     clearArrayOfCards: clearArrayOfCards,
     loopArrayForCards: loopArrayForCards,
+    checkIfArrayEmpty: checkIfArrayEmpty,
   }
 
+})();
+
+var popupFuncts = (function() {
+  'use strict';
+
+  function poppity() {
+      document.getElementById("container-popup").style.display = "inline";
+      document.getElementById("popup").style.display = "flex";
+  }
+
+  return {
+      poppity: poppity,
+  }
 })();
 
 let totalPop = [];
@@ -166,8 +200,29 @@ submitFormBtn.addEventListener('click', (e) => {
     var x = characterFuncts.createNewChar();
     totalPop.push(x);
     cardFuncts.loopArrayForCards();
+    cardFuncts.checkIfArrayEmpty();
     console.table(totalPop);
     e.preventDefault();
+})
+
+const clearArrayBtn = document.getElementById("clear_all_button")
+
+clearArrayBtn.addEventListener('click', () => {
+  let text = "Are you sure you want to completely remove all your characters?"
+  if (confirm(text) == true) {
+    totalPop = [];
+    console.table(totalPop);
+    cardFuncts.loopArrayForCards();
+    cardFuncts.checkIfArrayEmpty();
+  }
+})
+
+const hideFormBtn = document.getElementById("cancel_button")
+
+hideFormBtn.addEventListener('click', () => {
+  const newBookForm = document.getElementById("test")
+
+  newBookForm.style.display = 'none';
 })
 
 const showFormBtn = document.getElementById("new_form_button")
@@ -179,4 +234,37 @@ showFormBtn.addEventListener('click', () => {
     newBookForm.style.display = 'block';
   }
 })
+
+const btns = document.querySelector('#card_container');
+btns.addEventListener('click', e => {
+
+  let i = 0;
+  let objIndex = 0;
+
+  function findCharIndex(i) {
+    objIndex = totalPop.findIndex((obj => obj.id == i));
+    console.log("function findCharIndex worked");
+    return objIndex;
+  } 
+
+  totalPop[0].newJob = "Warrior"
+
+  if (e.target.className.slice(0,9) === 'jobstatus') {
+    console.log("selected job status");
+    popupFuncts.poppity();
+    // get "id" class of button clicked (and hence, of same card)
+    readStatusChangeNumber = Number(e.target.className.substr(10)); 
+    i = readStatusChangeNumber; // i is for the "id" class
+    objIndex = findCharIndex(i); // finds respective index in totalPop
+    cardFuncts.loopArrayForCards();
+  } else if (e.target.className.slice(0,13) === 'removeowncard') {
+    console.log("this is to remove stuffs");
+    // target char with same unique class #
+    toBeRemovedNumber = Number(e.target.className.substr(14));
+    removeFromLib();
+    loopArrayForCards();
+    checkBooksPresent();
+    console.table(totalPop);
+  }
+});
 
