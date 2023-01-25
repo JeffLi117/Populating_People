@@ -28,6 +28,7 @@ class Person {
 
     set newJob(job) {
       this.job_choice = job;
+      this.changedJobs = true;
     }
 
     get noClassStatement() {
@@ -193,8 +194,19 @@ var popupFuncts = (function() {
   'use strict';
 
   function poppity() {
-      document.getElementById("container-popup").style.display = "inline";
-      document.getElementById("popup").style.display = "flex";
+    document.getElementById("container-popup").style.display = "inline";
+    document.getElementById("popup").style.display = "flex";
+  }
+
+  function unpopAll() {
+    if (classChangeTarget !== "Jobless") {
+      document.getElementById(`popup_${classChangeTarget}`).style.display = "flex";
+      document.getElementById("container-popup").style.display = "none";
+      document.getElementById("popup").style.display = "none";
+    } else {
+      document.getElementById("container-popup").style.display = "none";
+      document.getElementById("popup").style.display = "none";
+    }
   }
 
   //////////////
@@ -239,6 +251,7 @@ var popupFuncts = (function() {
   return {
       poppity: poppity,
       specificClassPopup: specificClassPopup,
+      unpopAll: unpopAll,
   }
 })();
 
@@ -299,25 +312,56 @@ btns.addEventListener('click', e => {
   } 
 
   if (e.target.className.slice(0,9) === 'jobstatus') {
-    
+    let popupWarrior = document.getElementById("popup_Warrior")
+    let popupCleric = document.getElementById("popup_Cleric")
+    let popupArcher = document.getElementById("popup_Archer")
+    let popupCancel = document.getElementById("popup_Cancel")
+
     jobStatusChangeNumber = Number(e.target.className.substr(10));
     i = jobStatusChangeNumber; // i is for the "id" class
     objIndex = findCharIndex(i); // finds respective index in totalPop
     classChangeTarget = totalPop[objIndex].job_choice;
     popupFuncts.poppity();
     popupFuncts.specificClassPopup();
-    
 
+    popupWarrior.addEventListener("click", (e) => {
+      let classToChangeTo = e.target.innerHTML;
+      totalPop[objIndex].newJob = `${classToChangeTo}`;
+      popupFuncts.unpopAll();
+      cardFuncts.loopArrayForCards();
+    })
+
+    popupCleric.addEventListener("click", (e) => {
+      let classToChangeTo = e.target.innerHTML;
+      totalPop[objIndex].newJob = `${classToChangeTo}`;
+      popupFuncts.unpopAll();
+      cardFuncts.loopArrayForCards();
+    })
+
+    popupArcher.addEventListener("click", (e) => {
+      let classToChangeTo = e.target.innerHTML;
+      totalPop[objIndex].newJob = `${classToChangeTo}`;
+      popupFuncts.unpopAll();
+      cardFuncts.loopArrayForCards();
+    })
+
+    popupCancel.addEventListener("click", (e) => {
+      popupFuncts.unpopAll();
+    })
 
 
 
     // popup selection for class change
-    if (e.target.id.slice(0, 6) === "popup_") {
+    // ** put this all in a function!
+    // ** possibly make this into function outside and call in with objIndex?
+
+    /* if (e.target.id.slice(0, 6) === "popup_") {
       let classToChangeTo = e.target.id.substr(6);
+      //use .value instead????
       console.log(classToChangeTo);
       totalPop[objIndex].newJob = `${classToChangeTo}`;
       console.log(totalPop[objIndex].job_choice);
-    }
+    } */
 
     /*
     Below is specificClassPopup()
@@ -343,7 +387,7 @@ btns.addEventListener('click', e => {
   }
 });
 
-let popupWarrior = document.getElementById("popup_Warrior")
+/* let popupWarrior = document.getElementById("popup_Warrior")
 let popupCleric = document.getElementById("popup_Cleric")
 let popupArcher = document.getElementById("popup_Archer")
 let popupCancel = document.getElementById("popup_Cancel")
@@ -353,4 +397,4 @@ popupWarrior.addEventListener("click", (e) => {
   console.log(classToChangeTo);
   totalPop[objIndex].newJob = `${classToChangeTo}`;
   console.log(totalPop[objIndex].job_choice);
-})
+}) */
