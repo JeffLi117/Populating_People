@@ -20,6 +20,18 @@
     width: 100%;
     padding-bottom: 2.5rem;
   }
+
+  #content-wrap > button {
+    padding: 0.3rem;
+    font-size: 1.25rem;
+    color:rgb(36, 36, 36);
+    border-radius: 10px;
+    border: 2px groove rgb(107, 225, 255);
+  }
+
+  #content-wrap button:hover {
+    border: 3px inset rgb(148, 221, 255);
+  }
   
   html,
   body {
@@ -38,7 +50,17 @@
   }
   
   #test {
-      display: none;
+    display: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  #test > button {
+    padding: 0.3rem;
+    font-size: 1.25rem;
+    color:rgb(36, 36, 36);
+    border-radius: 10px;
+    border: 2px groove rgb(107, 225, 255);
   }
   
   #chars_present {

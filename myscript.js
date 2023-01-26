@@ -133,7 +133,7 @@ var cardFuncts = (function() {
 
     let jobName = document.createElement("p");
     jobName.innerHTML = `${job_choice}`;
-
+    
     newCardDiv.appendChild(newCardP);
     newCardDiv.appendChild(jobName);
     newCardDiv.appendChild(jobBtn);
@@ -208,39 +208,6 @@ var popupFuncts = (function() {
       document.getElementById("popup").style.display = "none";
     }
   }
-
-  //////////////
-
-  //popup to display
-  //specificClass popup hidden
-  //then a value of "popup_" to be selected
-  //then popup to disappear
-  //specificClass popup unhidden 
-
-  /* function testListener() {
-    
-  }
-
-  function myDisplayer(some) {
-    document.getElementById("chars_absent").innerHTML = some;
-  }
-  
-  function myCalculator(num1, num2, myCallback) {
-    let sum = num1 + num2;
-    myCallback(sum);
-  }
-  
-  myCalculator(5, 5, myDisplayer);
-
-  some_3secs_function(some_value, function() {
-    some_5secs_function(other_value, function() {
-      some_8secs_function(third_value, function() {
-        //All three functions have completed, in order.
-      });
-    });
-  }); */
-
-  ///////////////
 
   function specificClassPopup() {
     if (classChangeTarget !== "Jobless") {
@@ -348,33 +315,6 @@ btns.addEventListener('click', e => {
     popupCancel.addEventListener("click", (e) => {
       popupFuncts.unpopAll();
     })
-
-
-
-    // popup selection for class change
-    // ** put this all in a function!
-    // ** possibly make this into function outside and call in with objIndex?
-
-    /* if (e.target.id.slice(0, 6) === "popup_") {
-      let classToChangeTo = e.target.id.substr(6);
-      //use .value instead????
-      console.log(classToChangeTo);
-      totalPop[objIndex].newJob = `${classToChangeTo}`;
-      console.log(totalPop[objIndex].job_choice);
-    } */
-
-    /*
-    Below is specificClassPopup()
-    if (classChangeTarget !== "Jobless") {
-      document.getElementById(`popup_${classChangeTarget}`).style.display = "none";
-    }
-    */   
-
-    // get "id" class of button clicked (and hence, of same card)
-    /* jobStatusChangeNumber = Number(e.target.className.substr(9)); 
-    i = jobStatusChangeNumber; // i is for the "id" class
-    objIndex = findCharIndex(i); // finds respective index in totalPop
-    cardFuncts.loopArrayForCards(); */
   } else if (e.target.className.slice(0,13) === 'removeowncard') {
     console.log("this is to remove stuffs");
     // target char with same unique class #
@@ -386,15 +326,3 @@ btns.addEventListener('click', e => {
     console.table(totalPop);
   }
 });
-
-/* let popupWarrior = document.getElementById("popup_Warrior")
-let popupCleric = document.getElementById("popup_Cleric")
-let popupArcher = document.getElementById("popup_Archer")
-let popupCancel = document.getElementById("popup_Cancel")
-
-popupWarrior.addEventListener("click", (e) => {
-  let classToChangeTo = e.target.id.substr(6);
-  console.log(classToChangeTo);
-  totalPop[objIndex].newJob = `${classToChangeTo}`;
-  console.log(totalPop[objIndex].job_choice);
-}) */
